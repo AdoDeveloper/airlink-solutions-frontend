@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
 
@@ -6,20 +6,21 @@ import { ApiService } from '../../services/api.service';
   selector: 'app-services',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './services.component.html', // Usar archivo HTML externo
-  styleUrls: ['./services.component.css'], // Agrega estilos si es necesario
+  templateUrl: './services.component.html',
+  styleUrls: ['./services.component.css'],
 })
 export class ServicesComponent implements OnInit {
-  servicios: any[] = [];
-  loading = true;
+  @Input() servicios: any[] = [];  // Recibir servicios como Input
+  @Input() loading: boolean = true; // Recibir el estado de carga
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.fetchServicios(); // Llamada al servicio al inicializar el componente
+    if (!this.servicios.length) {
+      this.fetchServicios(); // Si no se pasan servicios, hace la solicitud
+    }
   }
 
-  // Método para obtener los servicios
   private fetchServicios(): void {
     this.apiService.getServicios().subscribe({
       next: (data) => {
