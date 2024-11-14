@@ -16,9 +16,10 @@ export class ServicesComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.fetchServicios();
+    this.fetchServicios(); // Llamada al servicio al inicializar el componente
   }
 
+  // Método para obtener los servicios
   private fetchServicios(): void {
     this.apiService.getServicios().subscribe({
       next: (data) => {
