@@ -1,0 +1,15 @@
+.nav-link {
+  @apply text-lg font-medium hover:text-yellow-400 transition duration-300;
+}
+
+.container {
+  @apply flex justify-between items-center mx-auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.block {
+  display: block;
+}

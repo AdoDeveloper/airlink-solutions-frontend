@@ -1,0 +1,36 @@
+<nav class="bg-gray-900 text-white sticky top-0 z-50 shadow-md py-2">
+  <div class="px-4 flex justify-between py-3">
+    <!-- Logo -->
+    <span class="text-2xl font-bold whitespace-nowrap">Airlink Solutions</span>
+
+    <!-- Menú grande -->
+    <ul class="desktop:flex smartphone:hidden tablet:hidden laptopx:flex items-center space-x-8">
+      <li><a routerLink="/" class="nav-link">Inicio</a></li>
+      <li><a routerLink="/services" class="nav-link">Servicios</a></li>
+      <li><a routerLink="/team" class="nav-link">Equipo</a></li>
+      <li><a routerLink="/contact" class="nav-link">Contacto</a></li>
+    </ul>
+
+    <!-- Botón hamburguesa -->
+    <button
+      class="desktop:hidden laptop:hidden laptopx:hidden text-3xl focus:outline-none space-x-4"
+      (click)="toggleMenu()"
+      aria-label="Toggle navigation"
+    >
+      <span>{{ menuOpen ? '✖' : '☰' }}</span>
+    </button>
+  </div>
+
+  <!-- Menú móvil -->
+  <div
+    class="desktop:hidden laptop:hidden bg-blue-800 text-white transition-all duration-300"
+    [ngClass]="{ 'block': menuOpen, 'hidden': !menuOpen }"
+  >
+    <ul class="flex flex-col items-start space-y-2 p-4">
+      <li><a routerLink="/" class="nav-link" (click)="closeMenu()">Inicio</a></li>
+      <li><a routerLink="/services" class="nav-link" (click)="closeMenu()">Servicios</a></li>
+      <li><a routerLink="/team" class="nav-link" (click)="closeMenu()">Equipo</a></li>
+      <li><a routerLink="/contact" class="nav-link" (click)="closeMenu()">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
